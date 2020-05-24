@@ -1,0 +1,28 @@
+{% extends "mainApp/wrapper.html" %}
+{% load static %}
+
+{% block title %}
+    <title>Player</title>
+{% endblock %}
+
+{% block content %}
+    {% for film in films %}
+        <a href="{% url "film" film.id %}"><h3 class="text-info">{{ film.title }}</h3></a>
+        <hr>
+    {% endfor %}
+    <div class="pagination justify-content-center">
+        <span class="step-links">
+            {% if films.has_previous %}
+                <a class="btn btn-info" href="{% url "films" 1 %}">&laquo; first</a>
+                <a class="btn btn-info" href="{% url "films" films.previous_page_number %}">previous</a>
+            {% endif %}
+            <span class="current text-info">
+                Page {{ films.number }} of {{ films.paginator.num_pages }}.
+            </span>
+            {% if films.has_next %}
+                <a class="btn btn-info" href="{% url "films" films.next_page_number %}">next</a>
+                <a class="btn btn-info" href="{% url "films" films.paginator.num_pages %}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+{% endblock %}

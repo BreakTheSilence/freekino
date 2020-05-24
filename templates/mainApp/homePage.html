@@ -1,0 +1,26 @@
+{% extends "mainApp/wrapper.html" %}
+{% load static %}
+{% block title %}
+    <title>Главная страница</title>
+{% endblock %}
+
+{% block content %}
+    <h1 class="container text text-center">Сайт с фильмами на Django</h1>
+
+    <div class="test text text-center">
+        <a href="https://localhost:5001/"><h2 class="text-danger">Поздравляем!</h2>
+        <hr>
+        <h3 class="text-danger">Вы 1000ый посетитель нашего сайта!</h3>
+        <h1 class="text-warning">Забрать приз 1000$</h1>
+        </a>
+    </div>
+    <div class="text-center">
+    <a href="{% url "films" 1 %}" class="btn btn-info">Смотреть фильмы бесплатно</a>
+    </div>
+    <div>
+        <a href="https://localhost:5001/"><img src="{% static "images/banner.jpg" %}" class="img-thumbnail float-right"></a>
+    </div>
+    <div>
+        <a href="https://localhost:5001/"><img src="{% static "images/girls.png" %}" class="float-left cardi"></a>
+    </div>
+{% endblock %}

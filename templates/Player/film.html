@@ -1,0 +1,30 @@
+{% extends "mainApp/wrapper.html" %}
+
+{% block title %}
+    <title>{{ film.title }}</title>
+{% endblock %}
+{% block description %}
+    <h4 class="text-info">{{ film.description }}</h4>
+{% endblock %}
+
+{% block content %}
+    {% if films.link != "None" %}
+        <div id="vid" class="container" align="center">
+        <h2 class="text-info">{{ film.title }}</h2>
+            <div id="video_wrapper" style="background-color:transparent;width:700px;height:393px;overflow:hidden;padding:0;">
+                <div id="videoCDN-player"><iframe src="{{ film.link }}" width="700" height="393" frameborder="0" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe></div>
+            </div>
+        </div>
+        {% else %}
+        <h1 class="text-warning text-center">Соре, там ссылка гейская. Не смог её вытянуть</h1>
+    {% endif %}
+    <br>
+    <div class="text-center">
+        <button onclick="goBack()" class="btn btn-primary">Назад</button>
+    </div>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+{% endblock %}
