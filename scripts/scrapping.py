@@ -16,9 +16,10 @@ print(Films.objects.all())
 with open("forkk.json", encoding="utf8") as json_file:
     data = json.load(json_file)
     for i in range(len(data)):
-        print(f"Adding film {data[i]['title']}")
+        print(f"Adding film {data[i]['title'].upper()}")
         f = Films()
         f.title = data[i]["title"]
+        f.normalized_title = data[i]["title"].upper()
         f.link = data[i]["link"]
         f.description = data[i]["description"]
         f.save()

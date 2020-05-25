@@ -1,8 +1,6 @@
 from django.shortcuts import render
 from django.core.paginator import Paginator
 from player.models import Films
-from itertools import chain
-from django.db.models import Q
 
 
 def index(request):
@@ -12,7 +10,7 @@ def index(request):
 def films(request, page_number=1):
     search = request.GET.get("search", "")
     if search:
-        all_films = Films.objects.filter(Q(title__icontains=search) & Q(title__icontains=search.title()))
+        all_films = Films.objects.filter(normalized_title__icontains=search.upper())
     else:
         all_films = Films.objects.all()
     current_page = Paginator(all_films, 10)
